@@ -15,11 +15,12 @@ for i in arr:
     else:               #...declaring else statement
         print(f'{i} is Odd')
 
+#sum of a list
 n = int(input("Enter list elements: "))
 arr = list(map(int,input().split()))[:n]
 s = 0
 for i in range(n):
-    s = s + arr
+    s = s + arr[i]
 print(s)
 
 #tuple unpacking
