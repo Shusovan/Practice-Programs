@@ -74,7 +74,6 @@ arr.sort()
 print(arr)   
 
 #sorting without sort function
-#sorting without sorting algo
 n = int(input())
 a = list(map(int, input().split()))[:n]
 for i in range(n):
