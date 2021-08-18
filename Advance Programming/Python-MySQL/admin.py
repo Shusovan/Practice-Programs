@@ -1,8 +1,11 @@
+# Note - the syntax of sql query may vary with different versions of python, this code is written in python 3.8
+
+#...importing mdules
 from datetime import date
-import random
+import random                   
 import string
-import mysql.connector
-my_db = mysql.connector.connect(host = 'localhost', user = 'root', password = 'Alliance@123', database = 'Bank', buffered = True)
+import mysql.connector          #...connection with MySQL Database
+my_db = mysql.connector.connect(host = 'localhost', user = 'root', password = 'password', database = 'Bank', buffered = True)
 
 def admin():
     account_ID = input("Account ID: ")
@@ -13,7 +16,8 @@ def admin():
     else:
         return False
 
-def New_Account():
+#...creating new account for an user
+def New_Account():                              
     branch = input("Branch Name: ")
     name = input("Name: ")
     age = int(input("Age: "))
@@ -36,6 +40,7 @@ def New_Account():
     print("...Data entered successfully...")
     main()
 
+#...function depositing amount
 def Deposit():
     acc_no = input("Enter Account Number: ")
     description = input("Transaction type: ")
@@ -63,6 +68,7 @@ def Deposit():
     print("...transaction successful...")
 #    main()
 
+#...function for withdrawing amount
 def Withdrawal():
     acc_no = input("Enter Account Number: ")
     description = input("Transaction type: ")
@@ -86,6 +92,7 @@ def Withdrawal():
     print("...transaction successful...")
     main()
 
+#...function for viwing all users
 def List_all_Account():
     sql_5 = ('select * from account')
     x = my_db.cursor()
@@ -95,6 +102,7 @@ def List_all_Account():
     my_db.commit()
     main()
 
+#...function to view all transactions
 def List_all_Transactions():
     sql_6 = "select Date_time,Description,Reference,Amount,Balance from transaction"
     x = my_db.cursor()
@@ -104,6 +112,7 @@ def List_all_Transactions():
     my_db.commit()
     main()
 
+#...function for checking balance
 def Display_Balance():
     acc_no = input("Enter Account Number: ")
     x = my_db.cursor()
@@ -113,6 +122,7 @@ def Display_Balance():
     my_db.commit()
     main()
 
+#...main function calls all other function based on user requirement
 def main():
     print(" 1. New Account\n 2. Deposit\n 3. Withdrawal\n 4. List all Accounts\n 5. List all Transactions\n 6. Display Balance")
     choice = input("Enter your choice: ")
@@ -129,7 +139,7 @@ def main():
     elif choice == '6':
         Display_Balance()
 
-if __name__ == "__main__":
+#...calling the main finction
+if __name__ == "__main__":          
     main()
 
-#...how to write a query account number to retrieve a data from table...    
